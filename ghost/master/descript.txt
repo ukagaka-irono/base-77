@@ -1,6 +1,7 @@
 charset,UTF-8
 
-name,base 77
+name,base 77：基と七々
+version,0.1.0
 type,ghost
 
 sakura.name,基

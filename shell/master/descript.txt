@@ -1,6 +1,7 @@
 charset,UTF-8
 
-name,base 77 ぷれーすほるだー
+name,base 77：基と七々 ぷれーすほるだー
+version,0.1.0
 type,shell
 
 craftman,base 77 プロジェクト
