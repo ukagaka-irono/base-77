@@ -146,43 +146,95 @@ surface.append10-18
 
 //------------------------------------------------------------------------------
 // アニメーション（まばたき・口パク）
-// 専用のサーフェス画像を images/animation/ に用意してから、下のコメントを外して使う。
+// images/animation/ の画像を 1000 番台のアニメーション専用サーフェスとして登録し、
+// 表情サーフェスに animation を割り当てています。
 //   animation<番号>.pattern<順番>,<合成方法>,<サーフェス番号>,<表示時間ms>,<X>,<Y>
 //   サーフェス番号 -1 は、それまでのアニメーション効果を消す。
-//   1000 番以降はアニメーション専用の番号として空けてある。
-// 画像を置いたら、まずアニメーション用サーフェスの定義（surface1000〜1010）を
-// コメントアウトから外し、そのあと animation ブロックを外す。
+//   X,Y は元のサーフェスからのずれ。400×600 の同寸法なので 0,0。
+// 1000 番台はアニメーション専用。通常の表情として \s[1000] などで直接呼ばない。
+// まばたきは、すでに目を閉じている表情（5 笑い・6 目閉じ／16 笑い・17 目閉じ）には
+// 付けず、目を開けているサーフェスだけに割り当てています。
 //------------------------------------------------------------------------------
 
-// アニメーション用サーフェス（画像を用意したらコメントを外す）
-// surface1000
-// {
-// 	element0,base,images/animation/surface1000.png,0,0
-// }
+// アニメーション用サーフェス
+// 1000 基 半目 / 1001 基 閉じ目 / 1002 七々 半目 / 1003 七々 閉じ目
+// 1010 基 口パク / 1011 七々 口パク
+surface1000
+{
+	element0,base,images/animation/surface1000.png,0,0
+}
 
-// surface1001
-// {
-// 	element0,base,images/animation/surface1001.png,0,0
-// }
+surface1001
+{
+	element0,base,images/animation/surface1001.png,0,0
+}
 
-// surface1010
-// {
-// 	element0,base,images/animation/surface1010.png,0,0
-// }
+surface1002
+{
+	element0,base,images/animation/surface1002.png,0,0
+}
 
-// まばたき（rarely は SSP にタイミングを任せる）
-// surface.append0-9
-// {
-// 	animation0.interval,rarely
-// 	animation0.pattern0,overlay,1000,120,0,0
-// 	animation0.pattern1,overlay,1001,120,0,0
-// 	animation0.pattern2,overlay,-1,80,0,0
-// }
+surface1003
+{
+	element0,base,images/animation/surface1003.png,0,0
+}
 
-// 口パク（talk の数字は、バルーンに何文字出るごとに再生するか）
-// surface.append0-9
-// {
-// 	animation1.interval,talk,1
-// 	animation1.pattern0,overlay,1010,150,0,0
-// 	animation1.pattern1,overlay,-1,100,0,0
-// }
+surface1010
+{
+	element0,base,images/animation/surface1010.png,0,0
+}
+
+surface1011
+{
+	element0,base,images/animation/surface1011.png,0,0
+}
+
+// まばたき（基）: sometimes は SSP にタイミングを任せる
+surface.append0-4
+{
+	animation0.interval,sometimes
+	animation0.pattern0,overlay,1000,90,0,0
+	animation0.pattern1,overlay,1001,130,0,0
+	animation0.pattern2,overlay,-1,60,0,0
+}
+
+surface.append7-9
+{
+	animation0.interval,sometimes
+	animation0.pattern0,overlay,1000,90,0,0
+	animation0.pattern1,overlay,1001,130,0,0
+	animation0.pattern2,overlay,-1,60,0,0
+}
+
+// まばたき（七々）
+surface.append10-15
+{
+	animation0.interval,sometimes
+	animation0.pattern0,overlay,1002,90,0,0
+	animation0.pattern1,overlay,1003,130,0,0
+	animation0.pattern2,overlay,-1,60,0,0
+}
+
+surface.append18
+{
+	animation0.interval,sometimes
+	animation0.pattern0,overlay,1002,90,0,0
+	animation0.pattern1,overlay,1003,130,0,0
+	animation0.pattern2,overlay,-1,60,0,0
+}
+
+// 口パク（基）: talk の数字は、バルーンに何文字出るごとに再生するか
+surface.append0-9
+{
+	animation1.interval,talk,1
+	animation1.pattern0,overlay,1010,140,0,0
+	animation1.pattern1,overlay,-1,90,0,0
+}
+
+// 口パク（七々）
+surface.append10-18
+{
+	animation1.interval,talk,1
+	animation1.pattern0,overlay,1011,140,0,0
+	animation1.pattern1,overlay,-1,90,0,0
+}
