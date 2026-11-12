@@ -8,8 +8,15 @@ version,1
 //------------------------------------------------------------------------------
 // base 77：基と七々 シェル定義（基本構造）
 //
-// 画像は surfaceNNNN.png の名前で自動対応しますが、正式なシェルアートで表情の
-// パーツを重ねられるように、各サーフェスに element を明示しています。
+// 画像は images/ 以下にキャラクター別で置きます（surfaces.txt からの相対パス）。
+//   images/motoi/surface0000-0009.png   基（\0）
+//   images/nanana/surface0010-0018.png  七々（\1）
+//   images/animation/                   まばたき・口パク用（1000 番以降）
+// ファイル名は surfaceNNNN.png の形を崩さず、サーフェス番号と対応させます。
+// 正式な絵に差し替えるときは、同じサイズ・同じファイル名で上書きします。
+//
+// 正式なシェルアートで表情のパーツを重ねられるように、各サーフェスに element を
+// 明示しています。
 //   element<番号>,<合成方法>,<画像ファイル>,<X>,<Y>
 //   合成方法は base（下地）と overlay（上に重ねる）。
 // 当たり判定は、同じ形のものを surface.append でまとめて定義しています。
@@ -21,52 +28,52 @@ version,1
 // 5 笑い（喜・楽） / 6 目閉じ / 7 怒り（怒） / 8 喜び（楽） / 9 悲しみ（哀）
 surface0
 {
-	element0,base,surface0000.png,0,0
+	element0,base,images/motoi/surface0000.png,0,0
 }
 
 surface1
 {
-	element0,base,surface0001.png,0,0
+	element0,base,images/motoi/surface0001.png,0,0
 }
 
 surface2
 {
-	element0,base,surface0002.png,0,0
+	element0,base,images/motoi/surface0002.png,0,0
 }
 
 surface3
 {
-	element0,base,surface0003.png,0,0
+	element0,base,images/motoi/surface0003.png,0,0
 }
 
 surface4
 {
-	element0,base,surface0004.png,0,0
+	element0,base,images/motoi/surface0004.png,0,0
 }
 
 surface5
 {
-	element0,base,surface0005.png,0,0
+	element0,base,images/motoi/surface0005.png,0,0
 }
 
 surface6
 {
-	element0,base,surface0006.png,0,0
+	element0,base,images/motoi/surface0006.png,0,0
 }
 
 surface7
 {
-	element0,base,surface0007.png,0,0
+	element0,base,images/motoi/surface0007.png,0,0
 }
 
 surface8
 {
-	element0,base,surface0008.png,0,0
+	element0,base,images/motoi/surface0008.png,0,0
 }
 
 surface9
 {
-	element0,base,surface0009.png,0,0
+	element0,base,images/motoi/surface0009.png,0,0
 }
 
 //---- 七々（\1）------------------------------------------------------------
@@ -74,47 +81,47 @@ surface9
 // 15 眠い / 16 笑い（喜・楽） / 17 目閉じ / 18 悲しみ（哀）
 surface10
 {
-	element0,base,surface0010.png,0,0
+	element0,base,images/nanana/surface0010.png,0,0
 }
 
 surface11
 {
-	element0,base,surface0011.png,0,0
+	element0,base,images/nanana/surface0011.png,0,0
 }
 
 surface12
 {
-	element0,base,surface0012.png,0,0
+	element0,base,images/nanana/surface0012.png,0,0
 }
 
 surface13
 {
-	element0,base,surface0013.png,0,0
+	element0,base,images/nanana/surface0013.png,0,0
 }
 
 surface14
 {
-	element0,base,surface0014.png,0,0
+	element0,base,images/nanana/surface0014.png,0,0
 }
 
 surface15
 {
-	element0,base,surface0015.png,0,0
+	element0,base,images/nanana/surface0015.png,0,0
 }
 
 surface16
 {
-	element0,base,surface0016.png,0,0
+	element0,base,images/nanana/surface0016.png,0,0
 }
 
 surface17
 {
-	element0,base,surface0017.png,0,0
+	element0,base,images/nanana/surface0017.png,0,0
 }
 
 surface18
 {
-	element0,base,surface0018.png,0,0
+	element0,base,images/nanana/surface0018.png,0,0
 }
 
 //------------------------------------------------------------------------------
@@ -139,11 +146,29 @@ surface.append10-18
 
 //------------------------------------------------------------------------------
 // アニメーション（まばたき・口パク）
-// 専用のサーフェス画像を用意してから、下のコメントを外して使う。
+// 専用のサーフェス画像を images/animation/ に用意してから、下のコメントを外して使う。
 //   animation<番号>.pattern<順番>,<合成方法>,<サーフェス番号>,<表示時間ms>,<X>,<Y>
 //   サーフェス番号 -1 は、それまでのアニメーション効果を消す。
 //   1000 番以降はアニメーション専用の番号として空けてある。
+// 画像を置いたら、まずアニメーション用サーフェスの定義（surface1000〜1010）を
+// コメントアウトから外し、そのあと animation ブロックを外す。
 //------------------------------------------------------------------------------
+
+// アニメーション用サーフェス（画像を用意したらコメントを外す）
+// surface1000
+// {
+// 	element0,base,images/animation/surface1000.png,0,0
+// }
+
+// surface1001
+// {
+// 	element0,base,images/animation/surface1001.png,0,0
+// }
+
+// surface1010
+// {
+// 	element0,base,images/animation/surface1010.png,0,0
+// }
 
 // まばたき（rarely は SSP にタイミングを任せる）
 // surface.append0-9

@@ -19,7 +19,8 @@
 ## 中身
 
 - `ghost/master/` … ゴースト本体。`descript.txt`、YAYA（`yaya.dll`）、辞書（`dic/normal/`）。
-- `shell/master/` … シェル。いまは仮のサーフェス（`surface0000.png`〜）だけ。
+- `shell/master/` … シェル。画像は `shell/master/images/`（`motoi/`・`nanana/`・`animation/`）に置く。
+  いまは仮のサーフェスだけ。配置のルールは `shell/master/images/README.md`。
 - `GHOST.md` … キャラクター、サーフェス、辞書の構成、トークの書き方。
 - `AGENTS.md` … AI エージェント向けの案内。
 
