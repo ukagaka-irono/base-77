@@ -77,8 +77,8 @@ TalkToUser
 	elseif "好き" _in_ reference[1] || "愛し" _in_ reference[1]{
 		'\0\s[1]……\w5\w5ありがとう。\w8\1\s[10]照れてるな。\w8\0\s[7]\n\n照れてないよ。\e'
 	}
-	elseif "base" _in_ reference[1] || "77" _in_ reference[1]{
-		'\0\s[0]ぼくが base で、\w5\1\s[10]おれが 77。\w8\0\n\nふたりで、ひとつ。\e'
+	elseif "基" _in_ reference[1] || "七々" _in_ reference[1] || "base 77" _in_ reference[1]{
+		'\0\s[0]ぼくが基で、\w5\1\s[10]わたしが七々。\w8\0\n\nふたりで、ひとつ。\e'
 	}
 	elseif "シェル" _in_ reference[1] || "見た目" _in_ reference[1]{
 		'\0\s[4]見た目は、まだ仮なんだ。\w8\1\s[10]そのうち変わる。\w8\0\n\n楽しみにしててね。\e'
