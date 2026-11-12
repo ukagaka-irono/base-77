@@ -133,15 +133,15 @@ surface18
 // 基：Face（顔）/ Head（頭）/ Body（体）
 surface.append0-9
 {
-	collision0,106,70,150,118,Face
-	collision1,82,48,174,140,Head
-	collision2,84,114,172,240,Body
+	collision0,152,150,248,238,Face
+	collision1,118,66,282,246,Head
+	collision2,105,240,295,590,Body
 }
 
 // 七々：Head（頭）
 surface.append10-18
 {
-	collision0,76,82,180,188,Head
+	collision0,117,133,283,556,Head
 }
 
 //------------------------------------------------------------------------------
