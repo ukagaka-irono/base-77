@@ -1,0 +1,71 @@
+//******************************************************************************
+// base 77  切り替えトーク辞書
+//******************************************************************************
+//
+// 関数名は [イベント] + [ゴースト名] です。該当がなければ Other。
+// 呼び出しは下の AYATEMPLATE.* が行います。
+//
+
+//******************************************************************************
+// ゴースト切り替え
+//******************************************************************************
+
+//その他のゴーストへ切り替え
+OnGhostChangingOther
+{
+	_escaped_name = SHIORI3FW.EscapeAllTags(reference[0])
+	'\0\s[1]%(_escaped_name)さんに、交代するんだね。\w8\1\s[10]行ってくるのか。\w8\0\s[0]\n\nまた、戻ってきてね。\w8\1\n\n待ってる。\e'
+	'\0\s[4]……\w5\w5いってらっしゃい。\w8\1\s[10]見送るだけだ。\w8\0\n\nちょっと、さみしいね。\e'
+}
+
+//その他のゴーストから切り替わり
+OnGhostChangedOther
+{
+	_escaped_name = SHIORI3FW.EscapeAllTags(reference[0])
+	'\0\s[2]あ、%(username)。\w8\1\s[10]戻ってきたな。\w8\0\s[5]\n\n%(_escaped_name)さんは、どうだった？\w8\1\n\n話を聞かせろよ。\e'
+	'\0\s[0]おかえり。\w9\nまだ、ここにいたよ。\w8\1\s[10]当たり前だ。\e'
+}
+
+//******************************************************************************
+// 切り替えトーク処理用（通常はいじらない）
+//******************************************************************************
+
+OnGhostChanging
+{
+	AYATEMPLATE.ExecuteChangeCallTalk("OnGhostChanging","OnClose")
+}
+
+OnGhostChanged
+{
+	AYATEMPLATE.ExecuteChangeCallTalk("OnGhostChanged","OnBoot")
+}
+
+OnGhostCalling
+{
+	AYATEMPLATE.ExecuteChangeCallTalk('OnGhostCalling')
+}
+
+OnGhostCalled
+{
+	AYATEMPLATE.ExecuteChangeCallTalk("OnGhostCalled","OnBoot")
+}
+
+OnGhostCallComplete
+{
+	AYATEMPLATE.ExecuteChangeCallTalk('OnGhostCallComplete')
+}
+
+OnOtherGhostClosed
+{
+	AYATEMPLATE.ExecuteChangeCallTalk('OnOtherGhostClosed')
+}
+
+OnOtherGhostBooted
+{
+	AYATEMPLATE.ExecuteChangeCallTalk('OnOtherGhostBooted')
+}
+
+OnOtherGhostChanged
+{
+	AYATEMPLATE.ExecuteChangeCallTalk('OnOtherGhostChanged')
+}

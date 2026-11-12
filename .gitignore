@@ -1,0 +1,14 @@
+# YAYA / SSP が実行時に作るもの
+ghost/master/yaya_variable.cfg
+ghost/master/profile/
+shell/master/profile/
+ghost/master/ayame.log
+
+# 配布物の出力先
+build/
+updates2.dau
+updates.txt
+
+# OS
+.DS_Store
+Thumbs.db

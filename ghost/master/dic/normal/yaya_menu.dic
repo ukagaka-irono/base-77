@@ -1,0 +1,122 @@
+//******************************************************************************
+// base 77  メニュー処理辞書
+//******************************************************************************
+//
+// AYATEMPLATE.MenuItem の使い方
+// 1つめ = 選択肢に表示する文字列
+// 2つめ = 選んだときに実行される関数名
+// 3つめ = 改行する量。50%刻み。省略すると100%
+//
+
+OpenMenu
+{
+	'\0\s[0]なに？'
+	--
+	AYATEMPLATE.MenuItem("なんか話して","Menu_AITALK",200)
+	--
+	if ( STRLEN(AYATEMPLATE.LastTalk) > 0 ) {
+		AYATEMPLATE.MenuItem("さっきの話","Menu_LASTTALK")
+	}
+	--
+	AYATEMPLATE.MenuItem("しゃべる頻度","Menu_TALKINTERVAL")
+	--
+	AYATEMPLATE.MenuItem("ほかのゴーストと話す","Menu_GHOSTCOMSTART")
+	--
+	AYATEMPLATE.MenuItem("base 77 について","Menu_ABOUT")
+	--
+	AYATEMPLATE.MenuItem("なんでもない","Menu_CANCEL",150)
+}
+
+//------------------------------------------------------------------------------
+// メニュー選択タイムアウト
+//------------------------------------------------------------------------------
+OnChoiceTimeout
+{
+	'\0\s[4]……\w5\w5\w5\w8\1\s[10]選ばないのか。\w8\0\n\nじゃあ、また今度。\e'
+	'\0\s[7]ちゃんと選んでよ。\w8\1\n\n忙しいんだろ。\w8\0\s[4]\n\n……そういうことにしておくね。\e'
+}
+
+//******************************************************************************
+// 各項目の処理内容
+//******************************************************************************
+
+//---- 何か話して
+Menu_AITALK
+{
+	OnAiTalk
+}
+
+//---- さっきの話
+Menu_LASTTALK
+{
+	AYATEMPLATE.LastTalk
+}
+
+//---- しゃべる頻度
+Menu_TALKINTERVAL
+{
+	'\0\s[0]どのくらいがいい？'
+	--
+	AYATEMPLATE.MenuItem("たくさん","Menu_TALKMAX",200)
+	--
+	AYATEMPLATE.MenuItem("ふつう","Menu_TALKNORMAL")
+	--
+	AYATEMPLATE.MenuItem("すこし","Menu_TALKPOOR")
+	--
+	AYATEMPLATE.MenuItem("黙ってて","Menu_TALKNONE")
+	--
+	AYATEMPLATE.MenuItem("戻る","OpenMenu",150)
+}
+
+//---- base 77 について
+Menu_ABOUT
+{
+	'\0\s[0]ぼくたちは、「紺野ややめ」っていうテンプレートゴーストから作られたんだ。\w8\1\s[10]名前と辞書だけ変えて、あとはまだそのまま。\w8\0\s[4]\n\nシェルも、仮のもの。\w8\1\n\nそのうち本物になる。\w8\0\s[5]\n\nだから、気長に見ててね。\e'
+}
+
+//---- 他のゴーストと話す
+Menu_GHOSTCOMSTART
+{
+	StartCommunicate
+}
+
+//---- キャンセルされた
+Menu_CANCEL
+{
+	'\0\s[4]……\w5\w5ぷー。\e'
+}
+
+//---- ヘッドラインのキャンセル
+Menu_HEADLINECANCEL
+{
+	'\0\s[5]はーい。\e'
+}
+
+//---- トーク頻度
+Menu_TALKMAX
+{
+	//---- たくさん話す（15秒間隔）
+	aitalkinterval = 15
+	'\0\s[5]たくさん話すよ。\w8\1\s[10]うるさくなるな。\w8\0\n\nそれもいいでしょ。\e'
+}
+
+Menu_TALKNORMAL
+{
+	//---- ふつうに話す（3分間隔）
+	aitalkinterval = 180
+	'\0\s[0]ふつうが、いちばんいいよね。\w8\1\s[10]そうだな。\e'
+}
+
+Menu_TALKPOOR
+{
+	//---- 静かに話す（5分間隔）
+	aitalkinterval = 300
+	'\0\s[1]静かにしてるね。\w8\1\n\n物足りないけどな。\e'
+}
+
+Menu_TALKNONE
+{
+	//---- 話さない
+	aitalkinterval = 0
+	'\0\s[6]じゃあ、黙ってる。\w8\1\s[10]呼んだら話す。\w8\0\n\nそれでいい？\e'
+}

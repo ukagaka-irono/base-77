@@ -1,0 +1,4 @@
+charset,UTF-8
+type,ghost
+name,base 77
+directory,base77

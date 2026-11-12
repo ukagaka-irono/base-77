@@ -1,0 +1,19 @@
+charset,UTF-8
+
+name,base 77 ぷれーすほるだー
+type,shell
+
+craftman,base 77 プロジェクト
+craftmanw,base 77 プロジェクト
+
+sakura.balloon.alignment,none
+kero.balloon.alignment,none
+
+sakura.seriko.alignmenttodesktop,free
+kero.seriko.alignmenttodesktop,free
+
+sakura.balloon.offsetx,0
+sakura.balloon.offsety,50
+
+kero.balloon.offsetx,10
+kero.balloon.offsety,55

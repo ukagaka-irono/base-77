@@ -1,0 +1,29 @@
+# nar に入れないファイル（gitignore と同じ書き方）
+# https://ssp.shillest.net/ukadoc/manual/descript_install.html
+
+# git とエディタの設定
+.git
+.gitignore
+.gitattributes
+.editorconfig
+.narignore
+.updateignore
+
+# 開発用のドキュメント
+GHOST.md
+AGENTS.md
+CLAUDE.md
+README.md
+.github/
+
+# ネットワーク更新ファイル
+updates2.dau
+updates.txt
+
+# 実行時に作られるもの
+profile/
+yaya_variable.cfg
+ayame.log
+
+# 配布物の出力先
+build/

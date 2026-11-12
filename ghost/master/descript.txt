@@ -1,0 +1,16 @@
+charset,UTF-8
+
+name,base 77
+type,ghost
+
+sakura.name,base
+kero.name,77
+
+sstp.allowunspecifiedsend,1
+
+icon,icon.ico
+
+shiori,yaya.dll
+
+craftman,base77
+craftmanw,base 77 プロジェクト
