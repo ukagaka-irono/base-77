@@ -46,7 +46,8 @@
 
 | ファイル（`ghost/master/dic/normal/`） | 主な中身 |
 |---|---|
-| `yaya_aitalk.dic` | ランダムトーク（`RandomTalkEx`）、キー入力 `OnKeyPress`、時報 `OnMinuteChange`、見切れ `OnSecondChange` |
+| `yaya_talk.dic` | ランダムトーク（`RandomTalk` / `RandomTalkEx`）。台詞を足すときはここ |
+| `yaya_aitalk.dic` | キー入力 `OnKeyPress`、時報 `OnMinuteChange`、見切れ `OnSecondChange` |
 | `yaya_bootend.dic` | 初回起動 `OnFirstBoot`、起動 `OnBoot`、終了 `OnClose`、時間帯の判定 `GetTimeSlot`、最小化からの復帰 |
 | `yaya_mouse.dic` | なで・つつきへの反応。関数名は「種別＋スコープ番号＋当たり判定名」（例: `MouseMove0Head`、`MouseDoubleClick1`） |
 | `yaya_menu.dic` | メニュー `OpenMenu` と、選択肢ごとの処理 `Menu_*` |
