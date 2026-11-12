@@ -75,7 +75,7 @@ TalkToUser
 		'\0\s[5]こんにちは。\w8\1\s[10]どうも。\e'
 	}
 	elseif "好き" _in_ reference[1] || "愛し" _in_ reference[1]{
-		'\0\s[1]……\w5\w5ありがとう。\w8\1\s[10]照れてるな。\w8\0\s[7]\n\n照れてないよ。\e'
+		'\0\s[1]……\w5\w5ありがとう。\w8\1\s[16]照れてるな。\w8\0\s[7]\n\n照れてないよ。\e'
 	}
 	elseif "基" _in_ reference[1] || "七々" _in_ reference[1] || "base 77" _in_ reference[1]{
 		'\0\s[0]ぼくが基で、\w5\1\s[10]わたしが七々。\w8\0\n\nふたりで、ひとつ。\e'
