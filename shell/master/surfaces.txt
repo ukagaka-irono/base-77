@@ -13,10 +13,12 @@ version,1
 //   element<番号>,<合成方法>,<画像ファイル>,<X>,<Y>
 //   合成方法は base（下地）と overlay（上に重ねる）。
 // 当たり判定は、同じ形のものを surface.append でまとめて定義しています。
-//   surface.append0-7 { ... } のように「開始-終了」で複数のサーフェスに適用。
+//   surface.append0-9 { ... } のように「開始-終了」で複数のサーフェスに適用。
 //------------------------------------------------------------------------------
 
-//---- 基（\0）0 素 / 1 照れ / 2 驚き / 3 不安 / 4 眠い / 5 笑い / 6 目閉じ / 7 怒り
+//---- 基（\0）--------------------------------------------------------------
+// 0 素 / 1 照れ（喜） / 2 驚き / 3 不安（哀） / 4 眠い
+// 5 笑い（喜・楽） / 6 目閉じ / 7 怒り（怒） / 8 喜び（楽） / 9 悲しみ（哀）
 surface0
 {
 	element0,base,surface0000.png,0,0
@@ -57,7 +59,19 @@ surface7
 	element0,base,surface0007.png,0,0
 }
 
-//---- 七々（\1）10 素 / 11 しかめ面
+surface8
+{
+	element0,base,surface0008.png,0,0
+}
+
+surface9
+{
+	element0,base,surface0009.png,0,0
+}
+
+//---- 七々（\1）------------------------------------------------------------
+// 10 素 / 11 しかめ面（怒） / 12 照れ（喜） / 13 驚き / 14 不安（哀）
+// 15 眠い / 16 笑い（喜・楽） / 17 目閉じ / 18 悲しみ（哀）
 surface10
 {
 	element0,base,surface0010.png,0,0
@@ -68,6 +82,41 @@ surface11
 	element0,base,surface0011.png,0,0
 }
 
+surface12
+{
+	element0,base,surface0012.png,0,0
+}
+
+surface13
+{
+	element0,base,surface0013.png,0,0
+}
+
+surface14
+{
+	element0,base,surface0014.png,0,0
+}
+
+surface15
+{
+	element0,base,surface0015.png,0,0
+}
+
+surface16
+{
+	element0,base,surface0016.png,0,0
+}
+
+surface17
+{
+	element0,base,surface0017.png,0,0
+}
+
+surface18
+{
+	element0,base,surface0018.png,0,0
+}
+
 //------------------------------------------------------------------------------
 // 当たり判定
 // 正式な絵を描いたら、この座標を新しい絵に合わせて直す。
@@ -75,7 +124,7 @@ surface11
 //------------------------------------------------------------------------------
 
 // 基：Face（顔）/ Head（頭）/ Body（体）
-surface.append0-7
+surface.append0-9
 {
 	collision0,106,70,150,118,Face
 	collision1,82,48,174,140,Head
@@ -83,7 +132,7 @@ surface.append0-7
 }
 
 // 七々：Head（頭）
-surface.append10-11
+surface.append10-18
 {
 	collision0,76,82,180,188,Head
 }
@@ -97,7 +146,7 @@ surface.append10-11
 //------------------------------------------------------------------------------
 
 // まばたき（rarely は SSP にタイミングを任せる）
-// surface.append0-7
+// surface.append0-9
 // {
 // 	animation0.interval,rarely
 // 	animation0.pattern0,overlay,1000,120,0,0
@@ -106,7 +155,7 @@ surface.append10-11
 // }
 
 // 口パク（talk の数字は、バルーンに何文字出るごとに再生するか）
-// surface.append0-7
+// surface.append0-9
 // {
 // 	animation1.interval,talk,1
 // 	animation1.pattern0,overlay,1010,150,0,0
