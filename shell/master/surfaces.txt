@@ -5,70 +5,110 @@ descript
 version,1
 }
 
-// 基（\0）: 0 素 / 1 照れ / 2 驚き / 3 不安 / 4 眠い / 5 笑い / 6 目閉じ / 7 怒り
+//------------------------------------------------------------------------------
+// base 77：基と七々 シェル定義（基本構造）
+//
+// 画像は surfaceNNNN.png の名前で自動対応しますが、正式なシェルアートで表情の
+// パーツを重ねられるように、各サーフェスに element を明示しています。
+//   element<番号>,<合成方法>,<画像ファイル>,<X>,<Y>
+//   合成方法は base（下地）と overlay（上に重ねる）。
+// 当たり判定は、同じ形のものを surface.append でまとめて定義しています。
+//   surface.append0-7 { ... } のように「開始-終了」で複数のサーフェスに適用。
+//------------------------------------------------------------------------------
+
+//---- 基（\0）0 素 / 1 照れ / 2 驚き / 3 不安 / 4 眠い / 5 笑い / 6 目閉じ / 7 怒り
 surface0
 {
-collision0,106,70,150,118,Face
-collision1,82,48,174,140,Head
-collision2,84,114,172,240,Body
+	element0,base,surface0000.png,0,0
 }
 
 surface1
 {
-collision0,106,70,150,118,Face
-collision1,82,48,174,140,Head
-collision2,84,114,172,240,Body
+	element0,base,surface0001.png,0,0
 }
 
 surface2
 {
-collision0,106,70,150,118,Face
-collision1,82,48,174,140,Head
-collision2,84,114,172,240,Body
+	element0,base,surface0002.png,0,0
 }
 
 surface3
 {
-collision0,106,70,150,118,Face
-collision1,82,48,174,140,Head
-collision2,84,114,172,240,Body
+	element0,base,surface0003.png,0,0
 }
 
 surface4
 {
-collision0,106,70,150,118,Face
-collision1,82,48,174,140,Head
-collision2,84,114,172,240,Body
+	element0,base,surface0004.png,0,0
 }
 
 surface5
 {
-collision0,106,70,150,118,Face
-collision1,82,48,174,140,Head
-collision2,84,114,172,240,Body
+	element0,base,surface0005.png,0,0
 }
 
 surface6
 {
-collision0,106,70,150,118,Face
-collision1,82,48,174,140,Head
-collision2,84,114,172,240,Body
+	element0,base,surface0006.png,0,0
 }
 
 surface7
 {
-collision0,106,70,150,118,Face
-collision1,82,48,174,140,Head
-collision2,84,114,172,240,Body
+	element0,base,surface0007.png,0,0
 }
 
-// 七々（\1）: 10 素 / 11 しかめ面
+//---- 七々（\1）10 素 / 11 しかめ面
 surface10
 {
-collision0,76,82,180,188,Head
+	element0,base,surface0010.png,0,0
 }
 
 surface11
 {
-collision0,76,82,180,188,Head
+	element0,base,surface0011.png,0,0
 }
+
+//------------------------------------------------------------------------------
+// 当たり判定
+// 正式な絵を描いたら、この座標を新しい絵に合わせて直す。
+// ポーズごとに形が変わる場合は、そのサーフェスのブロックに直接 collision を書く。
+//------------------------------------------------------------------------------
+
+// 基：Face（顔）/ Head（頭）/ Body（体）
+surface.append0-7
+{
+	collision0,106,70,150,118,Face
+	collision1,82,48,174,140,Head
+	collision2,84,114,172,240,Body
+}
+
+// 七々：Head（頭）
+surface.append10-11
+{
+	collision0,76,82,180,188,Head
+}
+
+//------------------------------------------------------------------------------
+// アニメーション（まばたき・口パク）
+// 専用のサーフェス画像を用意してから、下のコメントを外して使う。
+//   animation<番号>.pattern<順番>,<合成方法>,<サーフェス番号>,<表示時間ms>,<X>,<Y>
+//   サーフェス番号 -1 は、それまでのアニメーション効果を消す。
+//   1000 番以降はアニメーション専用の番号として空けてある。
+//------------------------------------------------------------------------------
+
+// まばたき（rarely は SSP にタイミングを任せる）
+// surface.append0-7
+// {
+// 	animation0.interval,rarely
+// 	animation0.pattern0,overlay,1000,120,0,0
+// 	animation0.pattern1,overlay,1001,120,0,0
+// 	animation0.pattern2,overlay,-1,80,0,0
+// }
+
+// 口パク（talk の数字は、バルーンに何文字出るごとに再生するか）
+// surface.append0-7
+// {
+// 	animation1.interval,talk,1
+// 	animation1.pattern0,overlay,1010,150,0,0
+// 	animation1.pattern1,overlay,-1,100,0,0
+// }
